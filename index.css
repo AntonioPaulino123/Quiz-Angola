@@ -1,47 +1,186 @@
-*{
-    background-color: rgb(173, 3, 3);
-    font-family: Verdana, 
-    baGeneva, Tahoma, sans-serif;
-}
-.question{
-    background-color: yellow;
-    margin-left: 20%; margin-right: 20%;
-    border: 1px solid black; border-radius: 10px;
-    padding: 10px;
-    font-size: 25px;
-}
-header{
-    font-size: 40px; margin-left: 38%; margin-right: 30%;
-    color: yellow;
-}
-p{
-    background-color: yellow;
-    margin-left: 20%;
-}
-button{
-    padding: 10px;
-    border: 1 px solid black; border-radius: 10px;
-    background-color: white;
-    width: 30%;
-    cursor: pointer;
-}
-.answer12{
-    margin-left: 28%;
-}
-.answer34{
-     margin-left: 28%;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+:root{
+  --bg: #ad0303;
+  --accent: #FFE100;
+  --accent-dark: #b38300;
+  --text: #000;
+  --muted: rgba(0,0,0,0.55);
 }
 
-.footer{
-    margin-left: 45%;
+*{
+  box-sizing: border-box;
+  letter-spacing: 0.2rem;
+  font-weight: 200;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+body{
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-header{
+  background: rgba(0,0,0,0.04);
+  padding: 8px 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.header-inner{
+  max-width: 960px;
+  margin: 0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 0 16px;
+}
+.brand{ display:flex; align-items:center; gap:12px; }
+.site-title{ font-size:20px; color:var(--accent); margin:0; }
+.main-nav .nav-btn{ background: transparent; border: 1px solid var(--accent); color: var(--accent); padding:8px 14px; border-radius: 10px; cursor:pointer; }
+.main-nav .nav-btn:hover{ background: var(--accent); color: var(--text); box-shadow: 0 8px 18px rgba(0,0,0,0.12); transform: translateY(-2px); }
+.skip-link{ position: absolute; left: -999px; top: auto; width:1px; height:1px; overflow:hidden; }
+.skip-link:focus{ position: static; left: 0; width: auto; height: auto; margin: 6px 16px; padding:6px 12px; background: #000; color: #fff; border-radius: 6px; display:inline-block; z-index:60; }
+
+.screen{
+  max-width: 960px;
+  margin: 18px auto;
+  text-align: center;
+  padding: 8px;
+}
+
+.hidden{ display: none; }
+
+.question{
+  background-color: var(--accent);
+  margin: 20px auto;
+  padding: 18px 20px;
+  border-radius: 12px;
+  width: 60%;
+  font-size: 26px;
+  color: var(--text);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+  position: relative;
+}
+
+.answers{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  place-items: center;
+  margin-top: 18px;
+}
+
+.answers .opt{
+  width: 42%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  cursor: pointer;
+  font-size: 17px;
+  color: #111;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.answers .opt:hover{ box-shadow: 0 14px 28px rgba(0,0,0,0.16); }
+
+.answers .opt.correct{
+  background: linear-gradient(180deg, #2fb84a 0%, #1c8f3c 100%);
+  color: #fff;
+  border: none;
+}
+
+.answers .opt.wrong{
+  background: linear-gradient(180deg, #e53935 0%, #b71c1c 100%);
+  color: #fff;
+  border: none;
+}
+
 .next{
-    width: 17%;
-    opacity: 0.7;
-    cursor: pointer;
+  width: 160px;
+  background: var(--accent);
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  opacity: 0.98;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.14);
+  transition: transform 160ms ease, box-shadow 160ms ease;
 }
-.next:hover{
-    background: #b38300;
-    transform:translateY(-2px);
-    transition: all 0.3s;
+
+.next:hover:not(:disabled){ box-shadow: 0 14px 28px rgba(0,0,0,0.22); }
+
+.next:disabled{ opacity: 0.6; cursor: not-allowed; transform: none; }
+
+#startBtn{
+  background: var(--accent);
+  padding: 12px 26px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
 }
+
+#restartBtn{
+  background: var(--accent);
+  padding: 10px 22px;
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.14);
+  transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+}
+#restartBtn:hover{ transform: translateY(-3px); box-shadow: 0 14px 28px rgba(0,0,0,0.18); }
+#restartBtn:focus{ outline: 3px solid rgba(255,225,0,0.95); outline-offset: 4px; }
+
+#start p, #end p{ font-size: 40px; color: var(--accent); margin: 24px 0;}
+
+#end button{ margin-top: 16px; }
+
+#endLabel{ font-size: 20px; color: var(--text); margin: 6px 0; }
+.end-score{ font-size: 72px; font-weight: 700; color: var(--accent); margin: 6px 0 12px; letter-spacing: 0.12rem; }
+@media (max-width: 800px){
+  .end-score{ font-size: 44px; }
+}
+@media (max-width: 480px){
+  .end-score{ font-size: 36px; }
+} 
+
+.footer{ margin-top: 18px; }
+
+@media (max-width: 800px){
+  .question{ width: 90%; font-size: 20px; }
+  .answers{ grid-template-columns: 1fr; }
+  .answers .opt{ width: 90%; }
+  .next{ width: 48%; }
+}
+
+.site-title{ cursor: pointer; }
+.site-title:focus{ outline: 3px solid rgba(255,225,0,0.95); outline-offset: 4px; border-radius: 6px; }
+
+@media (prefers-reduced-motion: reduce){
+  .answers .opt, .next{ transition: none; }
+}
+
+.site-footer{ background: rgba(0,0,0,0.04); padding: 12px 0; position: sticky; bottom: 0; box-shadow: 0 -2px 8px rgba(0,0,0,0.06); margin-top: 18px; }
+.timeline{ display:flex; gap:8px; justify-content:center; align-items:center; padding: 6px 12px; }
+.marker{ width:36px; height:36px; border-radius: 50%; background:#e8e8e8; display:flex; align-items:center; justify-content:center; font-size:14px; color:#111; border: 2px solid transparent; cursor: default; }
+.marker.current{ transform: scale(1.08); box-shadow: 0 6px 14px rgba(0,0,0,0.08); }
+.marker.correct{ background: linear-gradient(180deg,#2fb84a 0%,#1c8f3c 100%); color: #fff; border: none; }
+.marker.wrong{ background: #111; color:#fff; border: none; }
+@media (max-width: 480px){
+  .marker{ width:28px; height:28px; font-size:12px; }
+  .timeline{ gap:6px; }
+} 
