@@ -1,35 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="index.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saber Angola</title>
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <header>
-        Saber Angola
-    </header><br><br>
-    <main>
-        <div class="question">
-            <p>Qual é a capital de Angola?</p>
-        </div>
-    </main>   
-    <h1>
-        <div class="answer12">
-            <button onclick="validar1(this)" id="resposta1">Luanda</button>
-            <button onclick="validar2(this)" id="resposta2">Benguela</button>
-        </div>
-        <div class="answer34">
-            <button onclick="validar3(this)" id="resposta3">Huambo</button>
-            <button onclick="validar4(this)" id="resposta4">Cabinda</button>
-        </div>
-        <div class="footer">
-            <a href="pag2.html">
-                <button class="next" style="background-color: yellow;">PRÓXIMO</button>
-            </a>
-        </div>
-    </h1>
-     <script src="index.js"></script>
+  <a class="skip-link" href="#questionText">Saltar para o conteúdo</a>
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <div class="brand">
+        <h1 id="siteTitle" class="site-title" role="button" tabindex="0" aria-label="Reiniciar o questionário">Saber Angola</h1>
+      </div>
+      <nav class="main-nav" role="navigation" aria-label="Menu principal">
+      </nav>
+    </div>
+  </header>
+
+  <div id="start" class="screen">
+    <p>Bem-vindo ao<br>Saber Angola!</p>
+    <button id="startBtn">Jogar</button>
+  </div>
+
+  <div id="quiz" class="screen hidden">
+    <div class="question"><p id="questionText"></p></div>
+    <div class="answers">
+      <button class="opt" data-index="0"></button>
+      <button class="opt" data-index="1"></button>
+      <button class="opt" data-index="2"></button>
+      <button class="opt" data-index="3"></button>
+    </div>
+    <div class="footer">
+      <button id="nextBtn" class="next" disabled>PRÓXIMO</button>
+    </div>
+  </div>
+
+  <div id="end" class="screen hidden">
+    <p id="endLabel">Você acertou:</p>
+    <p id="endScore" class="end-score">0/0</p>
+    <button id="restartBtn">Recomeçar</button>
+  </div>
+
+  <footer class="site-footer" role="contentinfo" aria-label="Rodapé com linha do tempo do quiz">
+    <div id="timeline" class="timeline" aria-hidden="false"></div>
+  </footer>
+
+  <script src="index.js"></script> 
 </body>
 </html>
